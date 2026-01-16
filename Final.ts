@@ -5,6 +5,8 @@
 // Constants
 
 const POINTS_PER_CORRECT: number = 1;
+let counter: number = 5; 
+
 
 // Variables
 let score: number = 0;
@@ -22,7 +24,7 @@ let questions = [
 
 // The correct answers
 let answers = [
-  "Ottawa",
+  "Toronto",
   "54",
   "Mars",
   "32",
@@ -57,3 +59,15 @@ function checkAnswer(userAnswer: string, correctAnswer: string){
   }
 }
 
+
+// Loop through questions
+
+for (let counter = 0; counter < questions.length; counter++) {
+  let userAnswer = prompt(questions[counter]);
+
+  if (userAnswer !== null) {
+    checkAnswer(userAnswer, answers[counter]);
+  }
+
+  console.log("Current Score: " + score);
+}
