@@ -5,11 +5,15 @@
 // Constants
 
 const POINTS_PER_CORRECT: number = 1;
-let counter: number = 5; 
+
 
 
 // Variables
 let score: number = 0;
+let counter: number = 5; 
+
+
+
 
 // Question arrays
 
@@ -31,6 +35,15 @@ let answers = [
   "12"
 ];
 
+// Random congratulating messages
+
+let congrats = [
+  "Good job!",
+  "Way to Go!",
+  "Well done!"
+];
+
+let randomize = Math.floor(Math.random() * congrats.length);
 
 // Storing and asking the users name for later use.
 
@@ -52,11 +65,21 @@ console.log("Welcome, " + userName + "!\n\n" +
 function checkAnswer(userAnswer: string, correctAnswer: string){
   if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
     console.log("Correct!");
-    console.log("Good job ", userName)
+    console.log(congrats[randomize], userName);
     score = score + POINTS_PER_CORRECT;
-  } else {
+  } else if (userAnswer.toLowerCase() === "end"){
+    endGame()
+  }
+    else {
     console.log("That is incorrect. The correct answer was: " + correctAnswer)
   }
+}
+
+// Killswtich Function to end the loop and game
+
+function endGame(){
+  console.log("You ended the game. Thank you for playing!")
+  counter = 0
 }
 
 
