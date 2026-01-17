@@ -31,7 +31,7 @@ let answers = [
   "Toronto",
   "54",
   "Mars",
-  "32",
+  "-6",
   "12"
 ];
 
@@ -65,32 +65,38 @@ console.log("Welcome, " + userName + "!\n\n" +
 function checkAnswer(userAnswer: string, correctAnswer: string){
   if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
     console.log("Correct!");
+    let randomize = Math.floor(Math.random() * congrats.length);
     console.log(congrats[randomize], userName);
     score = score + POINTS_PER_CORRECT;
-  } else if (userAnswer.toLowerCase() === "end"){
-    endGame()
-  }
-    else {
+  } else {
     console.log("That is incorrect. The correct answer was: " + correctAnswer)
   }
 }
 
-// Killswtich Function to end the loop and game
+// endgame function
 
-function endGame(){
-  console.log("You ended the game. Thank you for playing!")
-  counter = 0
-}
+// function endGame(){
+//   console.log("Thats all! thank you for playing!")
+// }
 
 
 // Loop through questions
 
 for (let counter = 0; counter < questions.length; counter++) {
+  console.log("")
   let userAnswer = prompt(questions[counter]);
 
   if (userAnswer !== null) {
     checkAnswer(userAnswer, answers[counter]);
-  }
+  } 
+
+  // if (userAnswer.toLowerCase() === "end"){
+  //   endGame()
+  // }
 
   console.log("Current Score: " + score);
 }
+
+// ending the game
+
+console.log("That Marks the end of the game! Thank you for playing! your final score is...", score)
